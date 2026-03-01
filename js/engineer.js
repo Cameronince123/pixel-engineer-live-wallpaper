@@ -42,7 +42,20 @@ export class Engineer {
                     if (this.enemies.length > 0) {
                         this.stateMachine.transition("moveToCombat");
                     } else {
-                        this.patrol();
+                        // Follow the cursor if it's not too close
+                        const dx = this.mousePos.x - this.sprite.x;
+                        const dy = this.mousePos.y - this.sprite.y;
+                        const dist = Math.hypot(dx, dy);
+
+                        if (dist > 80) { // Keep some distance or follow
+                            this.sprite.x += (dx / dist) * this.speed * 0.5; // Follow slowly
+                            this.sprite.y += (dy / dist) * this.speed * 0.5;
+                        } else if (dist < 40) {
+                            this.sprite.x -= (dx / dist) * 1.5; // Flee if very close
+                            this.sprite.y -= (dy / dist) * 1.5;
+                        } else {
+                            this.patrol();
+                        }
                     }
                 }
             },

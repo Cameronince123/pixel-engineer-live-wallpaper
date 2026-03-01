@@ -2,12 +2,12 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    /* High-quality Ground Pattern */
-    background: radial-gradient(circle at 50% 100%, #a8d08d 0%, #7eb35a 70%, #5d8a3c 100%);
-    background-color: #a8d08d;
+    /* Proportional Sky & Ground split (10% sky) */
+    background: linear-gradient(to bottom,
+            #a6e3ff 0%, #87ceeb 10%,
+            #79b456 11%, #a8d08d 100%);
     height: 100vh;
     cursor: crosshair;
-    /* Improved UX for combat */
 }
 
 canvas {

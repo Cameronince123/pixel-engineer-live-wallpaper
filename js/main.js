@@ -9,6 +9,13 @@ export const app = new PIXI.Application({
     antialias: true
 });
 
+// --- USER CONFIG ---
+export const USER_CONFIG = {
+    timezoneOffset: 5.5, // IST (India)
+    cycleSpeed: 20000      // 1.0 = Real-time. Try 20000 to see the whole day in seconds.
+};
+// --------------------
+
 app.view.id = 'pixi-canvas';
 document.body.appendChild(app.view);
 
@@ -32,7 +39,22 @@ window.addEventListener("dblclick", (e) => {
 });
 
 app.ticker.add((delta) => {
-    environment.update(delta);
+    // 1. Calculate Time with offset
+    const now = Date.now();
+    const dayInMs = 24 * 60 * 60 * 1000;
+
+    let normalizedTime;
+    if (USER_CONFIG.cycleSpeed > 1) {
+        normalizedTime = (now * USER_CONFIG.cycleSpeed / dayInMs) % 1.0;
+    } else {
+        // Local time adjusted for offset correctly
+        const d = new Date(now + (USER_CONFIG.timezoneOffset * 3600 * 1000));
+        const ms = (d.getUTCHours() * 3600000) + (d.getUTCMinutes() * 60000) + (d.getUTCSeconds() * 1000) + d.getUTCMilliseconds();
+        normalizedTime = ms / dayInMs;
+    }
+
+    // 2. Update Systems
+    environment.update(delta, normalizedTime);
     engineer.update(enemySystem.getEnemies());
     sceneManager.update(delta);
 });

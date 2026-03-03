@@ -13,8 +13,12 @@ export class Environment {
         this.skyOverlay = new PIXI.Graphics();
         this.groundOverlay = new PIXI.Graphics();
         this.starsContainer = new PIXI.Container();
+        this.celestialContainer = new PIXI.Container();
+        this.cloudContainer = new PIXI.Container();
         this.skyContainer.addChild(this.skyOverlay);
         this.skyContainer.addChild(this.starsContainer);
+        this.skyContainer.addChild(this.celestialContainer);
+        this.skyContainer.addChild(this.cloudContainer);
         this.groundContainer.addChild(this.groundOverlay);
 
         this.clouds = [];
@@ -47,13 +51,13 @@ export class Environment {
         // Celestial Bodies (Sprites)
         this.sun = PIXI.Sprite.from('assets/sun.png');
         this.sun.anchor.set(0.5);
-        this.sun.scale.set(0.18); // Slightly smaller to ensure full view
-        this.skyContainer.addChild(this.sun);
+        this.sun.scale.set(0.18);
+        this.celestialContainer.addChild(this.sun);
 
         this.moon = PIXI.Sprite.from('assets/moon.png');
         this.moon.anchor.set(0.5);
         this.moon.scale.set(0.12);
-        this.skyContainer.addChild(this.moon);
+        this.celestialContainer.addChild(this.moon);
 
         // Interaction for Time Display
         this.sun.eventMode = 'static';
@@ -104,11 +108,6 @@ export class Environment {
         this.sun.on('pointerout', onOut);
         this.moon.on('pointerout', onOut);
 
-        // Fix order: Overlay at bottom, celestial bodies on top
-        this.skyContainer.setChildIndex(this.skyOverlay, 0);
-        this.skyContainer.setChildIndex(this.sun, this.skyContainer.children.length - 1);
-        this.skyContainer.setChildIndex(this.moon, this.skyContainer.children.length - 1);
-
         this.initStars();
 
         for (let i = 0; i < 3; i++) {
@@ -147,7 +146,7 @@ export class Environment {
         cloud.scale.set(scale);
         // Slower movement for further away (smaller) clouds
         cloud.speed = (0.04 + Math.random() * 0.08) * (scale * 10);
-        this.skyContainer.addChild(cloud);
+        this.cloudContainer.addChild(cloud);
         this.clouds.push(cloud);
     }
 

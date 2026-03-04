@@ -156,8 +156,8 @@ export class Environment {
         const grassAssets = ['assets/grass1.png', 'assets/grass2.png', 'assets/grass3.png'];
         const stoneAssets = ['assets/stone1.png'];
 
-        // Increased count (45) for a denser, richer field
-        for (let i = 0; i < 45; i++) {
+        // Reduced count (25) for a cleaner, better-proportioned field
+        for (let i = 0; i < 25; i++) {
             const isStone = Math.random() < 0.12;
             const asset = isStone ? stoneAssets[0] : grassAssets[Math.floor(Math.random() * grassAssets.length)];
             const sprite = PIXI.Sprite.from(asset);

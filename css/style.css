@@ -48,9 +48,9 @@ canvas {
     letter-spacing: 0.4px;
     z-index: 9999;
     font-family: 'Press Start 2P', monospace;
-      box-shadow:
-        0 4px 0 rgba(0,0,0,0.4),
-        0 0 12px rgba(121,180,86,0.4);
+    box-shadow:
+        0 4px 0 rgba(0, 0, 0, 0.4),
+        0 0 12px rgba(121, 180, 86, 0.4);
 
 }
 

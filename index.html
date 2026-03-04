@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Pixel Engineer Wallpaper</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.3.2/pixi.min.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="assets/frames/down_1.png">
@@ -11,10 +12,17 @@
 
 <body>
 
-  <div id="watermark" class="glass-theme">
-    <span class="dev-tag">Built by </span>
+<div id="watermark" class="glass-theme">
+  <div class="watermark-main">
+    <span class="dev-tag">Built by</span>
     <a href="https://github.com/owsam22" target="_blank">Sam</a>
   </div>
+
+  <div class="wm-version">
+    <span class="wm-v"></span>
+    <span id="wm-version-number"></span>
+  </div>
+</div>
 
   <div id="time-display" class="glass-theme">
     <div class="day">Monday</div>
@@ -22,6 +30,7 @@
     <div class="time">00:00:00 AM</div>
   </div>
   <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/versioncount.js"></script>
 
 </body>
 

